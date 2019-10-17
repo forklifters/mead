@@ -26,6 +26,8 @@ const pipeline = [
   pad,
   border,
   overlays,
+  saturation,
+  colorQuant,
   constrainOriginal,
   output
 ]
@@ -80,6 +82,18 @@ function sharpen(tr, params) {
 function blur(tr, params) {
   if (params.blur) {
     tr && tr.blur(params.blur ? Math.max(0.3, params.blur / 8) : undefined)
+  }
+}
+
+function saturation(tr, params) {
+  if (params.saturation && params.saturation === -100) {
+    tr && tr.grayscale()
+  }
+}
+
+function colorQuant(tr, params) {
+  if (params.colorQuant && params.colorQuant === 2) {
+    tr && tr.threshold()
   }
 }
 

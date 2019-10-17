@@ -36,6 +36,8 @@ const queryMap = [
   ['invert', 'invert', presenceBool],
   ['sharp', 'sharpen', intBetween(1, 100)],
   ['blur', 'blur', intBetween(1, 2000)],
+  ['colorquant', 'colorQuant', int, enumz([2])],
+  ['sat', 'saturation', int, enumz([-100])],
 
   // Changes dimensions
   ['or', 'orientation', int, enumz([0, 90, 180, 270])],

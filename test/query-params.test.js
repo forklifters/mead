@@ -31,6 +31,24 @@ test('[queryparams] throws if `or` param is not 0, 90, 180 or 270', () => {
   expect(() => fromQueryString({or: '89'})).toThrowError(/must be one of/)
 })
 
+test('[queryparams] translates `colorquant` param into numeric `colorQuant`', () => {
+  const {colorQuant} = fromQueryString({colorquant: '2'})
+  expect(colorQuant).toBe(2)
+})
+
+test('[queryparams] throws if `colorquant` param is not 2', () => {
+  expect(() => fromQueryString({colorquant: '16'})).toThrowError(/must be one of/)
+})
+
+test('[queryparams] translates `sat` param into numeric `saturation`', () => {
+  const {saturation} = fromQueryString({sat: '-100'})
+  expect(saturation).toBe(-100)
+})
+
+test('[queryparams] throws if `sat` param is not -100', () => {
+  expect(() => fromQueryString({sat: '16'})).toThrowError(/must be one of/)
+})
+
 test('[queryparams] translates `fm` param into object `output`', () => {
   const {output} = fromQueryString({fm: 'pjpg'})
   expect(output).toEqual({format: 'jpeg', mime: 'image/jpeg', progressive: true})

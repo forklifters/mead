@@ -11,6 +11,26 @@ test('[transforms] invert colors', done => {
   })
 })
 
+test('[transforms] color quantization (threshold)', done => {
+  readImage('small-landscape.png?colorquant=2').then(img => {
+    expect(img.width).toBe(367)
+    expect(img.height).toBe(153)
+    expect(img.colorAt(0, 0)).toBe('ffffff')
+    expect(img.colorAt(120, 120)).toBe('000000')
+    done()
+  })
+})
+
+test('[transforms] saturation (grayscale)', done => {
+  readImage('small-landscape.png?sat=-100').then(img => {
+    expect(img.width).toBe(367)
+    expect(img.height).toBe(153)
+    expect(img.colorAt(0, 0)).toBe('a8a8a8')
+    expect(img.colorAt(120, 120)).toBe('797979')
+    done()
+  })
+})
+
 test('[transforms] border image (inlaid)', done => {
   readImage('mead.png?border=10,bf1942').then(img => {
     expect(img.width).toBe(512)
