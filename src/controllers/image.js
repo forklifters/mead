@@ -164,9 +164,6 @@ function getHeaders(info, params, response) {
     headers[header] = Array.isArray(value) ? value.join(',') : value
   })
 
-  // Shameless promotion
-  headers['x-powered-by'] = 'mead.science'
-
   return headers
 }
 
