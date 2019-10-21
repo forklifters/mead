@@ -32,22 +32,28 @@ Mead can be passed the path of a configuration file. It can be either a plain JS
 module.exports = {
   sources: [{
     name: 'holiday',
-    adapter: 'fs',
-    config: {
-      basePath: '/home/rexxars/photos/holiday',
-      secureUrlToken: 'mootools'
+    adapter: {
+      type: 'fs',
+      config: {
+        basePath: '/home/rexxars/photos/holiday',
+        secureUrlToken: 'mootools'
+      }
     }
   }, {
     name: 'proxy',
-    adapter: 'proxy',
-    config: {
-      secureUrlToken: 'foobar'
+    adapter: {
+      type: 'proxy',
+      config: {
+        secureUrlToken: 'foobar'
+      }
     }
   }, {
     name: 'hacknights',
-    adapter: 'webfolder',
-    config: {
-      baseUrl: 'https://espen.codes/photos/hacknights'
+    adapter: {
+      type: 'webfolder',
+      config: {
+        baseUrl: 'https://espen.codes/photos/hacknights'
+      }
     }
   }],
 
